@@ -1,12 +1,3 @@
-#------------------------------------------------------------------------------
-# Usage: find_package(SDL2 [REQUIRED] [COMPONENTS main])
-#
-# Sets variables:
-#     SDL2_INCLUDE_DIRS
-#     SDL2_LIBS
-#     SDL2_DLLS
-#------------------------------------------------------------------------------
-
 include(FindPackageHandleStandardArgs)
 
 set(_SDL2_use_main FALSE)
@@ -19,7 +10,7 @@ foreach(_SDL2_component ${SDL2_FIND_COMPONENTS})
 endforeach()
 
 if(WIN32)
-    find_path(SDL2_ROOT "include/SDL2/SDL.h" PATHS "${CMAKE_CURRENT_LIST_DIR}/../includes/SDL2" NO_DEFAULT_PATH)
+    find_path(SDL2_ROOT "include/SDL2/SDL.h" PATHS "${CMAKE_CURRENT_LIST_DIR}/../vendor/SDL2" NO_DEFAULT_PATH)
     if(SDL2_ROOT)
         if (EXISTS "${SDL2_ROOT}/lib/libSDL2.a")
             set(SDL2_INCLUDE_DIRS "${SDL2_ROOT}/include")
@@ -36,9 +27,8 @@ if(WIN32)
 
     mark_as_advanced(SDL2_ROOT)
     find_package_handle_standard_args(SDL2 DEFAULT_MSG SDL2_INCLUDE_DIRS SDL2_LIBS SDL2_DLLS)
+    
 else()
-    # On MacOS, should be installed via Macports
-    # On Ubuntu, install with: apt-get install libsdl2-dev
     find_path(SDL2_INCLUDE_DIRS SDL.h PATH_SUFFIXES SDL2)
     find_library(_SDL2_LIB SDL2)
     set(SDL2_LIBS ${SDL2})
