@@ -1,4 +1,5 @@
 @ECHO OFF
-cd build
+cd build/
 cmake ..
 make
+cd ..
