@@ -2,6 +2,8 @@
 
 !.gitignore
 !CMakeLists.txt
+!build.bat
+!run.bat
 !cmake/
 !res/
 !src/
