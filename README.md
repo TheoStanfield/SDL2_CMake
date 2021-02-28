@@ -1,1 +1,1 @@
-# SDL2_CMake
+# SDL2 CMake
